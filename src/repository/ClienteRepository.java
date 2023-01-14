@@ -2,6 +2,7 @@ package repository;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -10,7 +11,7 @@ import model.Cliente;
 
 public class ClienteRepository implements Repository<Cliente> {
 
-	Map<Integer,Cliente> clienteRepotitory;
+	private Map<Integer,Cliente> clienteRepotitory;
 	public ClienteRepository() {
 		
 		this.clienteRepotitory = new HashMap<>();
@@ -36,9 +37,22 @@ public class ClienteRepository implements Repository<Cliente> {
 	}
 
 	@Override
-	public Cliente salvar(Cliente cliente) {
-		// TODO Auto-generated method stub
-		return this.clienteRepotitory.put(cliente.getId(), cliente);
+	public Cliente salvar(Cliente t) {
+		
+         this.clienteRepotitory.put(t.getId(), t);
+		return t;
+	}
+	
+	public Cliente buscarPorCpf(String cpf) {
+		List<Cliente> clientes = this.buscarTodos();
+		
+		for (Cliente cliente : clientes) {
+			if(cliente.getCpf().equals(cpf)) {
+				return  cliente;
+			}
+		}
+		return null;
+		
 	}
 
 }

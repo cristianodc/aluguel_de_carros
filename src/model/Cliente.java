@@ -8,11 +8,12 @@ public enum TipoPessoa{PJ , PF}
  private TipoPessoa tipo;
  private List<Veiculo> veiculosAlugados;
  
- public Cliente(Integer id, String nome, String cpf, String senha, String endereco,TipoPessoa tipo) {
-		super(id, nome, cpf, senha, endereco);
+ public Cliente( String nome, String cpf, String senha, String endereco,TipoPessoa tipo) {
+		super( nome, cpf, senha, endereco);
 		this.tipo = tipo;
 		// TODO Auto-generated constructor stub
 	}
+ 
 public TipoPessoa getTipo() {
 	return tipo;
 }

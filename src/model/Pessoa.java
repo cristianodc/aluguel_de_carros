@@ -11,7 +11,7 @@ public abstract class Pessoa {
 	protected String endereco;
 	
 	
-	public Pessoa(Integer id, String nome, String cpf, String senha, String endereco) {
+	public Pessoa( String nome, String cpf, String senha, String endereco) {
 		
 		this.id = Contador.proximo();
 		this.nome = nome;
