@@ -12,8 +12,10 @@ public class VendedorRepository implements Repository<Vendedor> {
 
 	private Map<Integer,Vendedor> vendedorRepository;
 	
-	private VendedorRepository() {
+	public  VendedorRepository() {
 		this.vendedorRepository = new HashMap<>();
+	    this.salvar(new Vendedor("Cristiano", "1010", "123", "Rua quatro", 5000));
+		this.salvar(new Vendedor("Coffy", "1010", "123", "Rua quatro", 5000));
 	}
 	@Override
 	public List<Vendedor> buscarTodos() {
