@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+import execptions.VeiculoException;
 import model.Cliente;
 import model.Cliente.TipoPessoa;
 import model.Veiculo;
@@ -75,8 +76,13 @@ public class ClienteService {
 			
 		}
 
-	public void motrarVeiculosAlugados(Cliente clienteLogado) {
+	public void motrarVeiculosAlugados(Cliente clienteLogado) throws VeiculoException {
 		List<Veiculo> veiculos = clienteLogado.getVeiculosAlugados();
+		
+		if(veiculos == null) 
+			{
+			   throw new VeiculoException("Sem veículos para devolver");
+			}
 		for (Veiculo veiculo : veiculos) {
 			System.out.println(veiculo);
 		}
@@ -93,6 +99,10 @@ public class ClienteService {
 		}
 			
 		}
+
+	public ClienteRepository getRepository() {
+		return repository;
+	}
 		
 	
 }

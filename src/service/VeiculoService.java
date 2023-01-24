@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
+import execptions.VeiculoException;
 import model.Veiculo;
 import model.Veiculo.Status;
 import repository.VeiculoRepository;
@@ -35,9 +36,12 @@ public class VeiculoService {
 		}
 	}
 	
-	public Veiculo alugaVeiculo(int id, int dias) {
+	public Veiculo alugaVeiculo(int id, int dias) throws Exception {
 		Veiculo  veiculo = this.repository.buscarPorId(id);
 		
+		if(veiculo == null) {
+			throw new VeiculoException("Veículo não encontrado");
+		}
 		if(veiculo.getStatus() == Status.ALUGADO)
 			{
 				System.out.println("Veiculo Alugado");
@@ -59,5 +63,22 @@ public class VeiculoService {
 		
 	}
 	
+	public void buscarAlugados(){
+		List<Veiculo> veiculosAlugados= this.repository.buscarTodos();
 		
+		for (Veiculo veiculo : veiculosAlugados) {
+			
+			if(veiculo.getStatus()== Status.ALUGADO) {
+				System.out.println(veiculo);
+			}
+		}
+		
+		
+	}
+
+	public VeiculoRepository getRepository() {
+		return repository;
+	}	
+	
+	
 }

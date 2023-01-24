@@ -17,7 +17,9 @@ public class ClienteRepository implements Repository<Cliente> {
 		
 		this.clienteRepotitory = new HashMap<>();
 		Cliente cliente = new Cliente("Cristiano", "5050", "123", "Rua 1", TipoPessoa.PF);
+		Cliente cliente01 = new Cliente("Beltrano", "5050", "123", "Rua 1", TipoPessoa.PJ);
 		this.clienteRepotitory.put(cliente.getId(), cliente);
+		this.clienteRepotitory.put(cliente01.getId(), cliente01);
 	}
 	@Override
 	public List<Cliente> buscarTodos() {

@@ -1,11 +1,13 @@
 package repository;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 import model.Admin;
+import model.Vendedor;
 
 public class AdminRepository implements Repository<Admin> {
 
@@ -14,11 +16,13 @@ public class AdminRepository implements Repository<Admin> {
 	public AdminRepository() {
 		
 		this.adminRepository = new HashMap<>();
+		this.salvar(new Admin("Beltrano", "5050", "123", "Rua 4"));
 	}
 	@Override
 	public List<Admin> buscarTodos() {
-		// TODO Auto-generated method stub
-		return this.adminRepository.values().stream().collect(Collectors.toList());
+		Collection<Admin> adminColl = this.adminRepository.values();
+		List<Admin> admins = adminColl.stream().collect(Collectors.toList());
+		return admins;
 	}
 
 	@Override
