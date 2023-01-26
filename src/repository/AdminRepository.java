@@ -16,7 +16,7 @@ public class AdminRepository implements Repository<Admin> {
 	public AdminRepository() {
 		
 		this.adminRepository = new HashMap<>();
-		this.salvar(new Admin("Beltrano", "5050", "123", "Rua 4"));
+		this.salvar(new Admin("Beltrano", "96683899053", "123", "Rua 4"));
 	}
 	@Override
 	public List<Admin> buscarTodos() {

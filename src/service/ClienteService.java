@@ -90,13 +90,15 @@ public class ClienteService {
 
 	public void removerVeiculo(Cliente clienteLogado,int idVeiculo) {
 		
-		for(int i=0; i < clienteLogado.getVeiculosAlugados().size(); i++) {
+		/*for(int i=0; i < clienteLogado.getVeiculosAlugados().size(); i++) {
 			
 			if(clienteLogado.getVeiculosAlugados().get(i).getId() == idVeiculo) 
 				{
 					clienteLogado.getVeiculosAlugados().remove(i);
 				}
-		}
+		}*/
+		
+		clienteLogado.getVeiculosAlugados().removeIf(v -> v.getId() == idVeiculo);
 			
 		}
 

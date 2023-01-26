@@ -16,12 +16,13 @@ import service.AdminService;
 import service.ClienteService;
 import service.VeiculoService;
 import service.VendedorService;
+import util.Normaliza;
 
 public class Principal {
 
 	public static void main(String[] args) throws Exception {
 		/*
-		 * Proximo video 12/12/2022 INICIAR EM 1:15 MIN
+		 * CONTINUAR  video 14/12/2022 EM 1:06:min
 		 * ******************************************
 		 * */
 		DateTimeFormatter formater = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -48,11 +49,18 @@ public class Principal {
 								Menu.bemVindo();
 								
 								String cpf = sc .next();
+								
 								if(cpf.equals("0")) {
 									continua = false;
 									break;
 								}
-							     clienteLogado = clienteService.buscarCliPorCpf(cpf);
+								
+								 if(Normaliza.validaCpf(cpf)) {
+									 
+									 clienteLogado = clienteService.buscarCliPorCpf(cpf);
+								 }
+								
+							    
 							     if(clienteLogado != null) {
 							    	    sc.nextLine();
 										System.out.println(" Agora digite sua senha: ");
@@ -194,8 +202,9 @@ public class Principal {
 				
 				System.out.println("TIPO DE ENTRADA INVÁLIDO");
 				sc.nextLine();
-			}
-														
+			}catch (Exception e) {
+				System.out.println(e.getMessage());
+			}											
 		}while(continua);
 		
 		

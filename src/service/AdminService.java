@@ -14,6 +14,7 @@ import repository.AdminRepository;
 import repository.ClienteRepository;
 import repository.VeiculoRepository;
 import repository.VendedorRepository;
+import util.Normaliza;
 
 public class AdminService {
 
@@ -44,11 +45,11 @@ public class AdminService {
 	}
 	public void cadastrarPessoa(boolean cliente) {
 		sc.nextLine();
-		System.out.println("Digite o  nome do ");
+		System.out.println("Digite o  nome  ");
 		String nome = sc.nextLine();
-		System.out.println("Digite o cpf do ");
+		System.out.println("Digite o cpf  ");
 		String cpf = sc.nextLine();
-		System.out.println("Digite o endereco do ");
+		System.out.println("Digite o endereco  ");
 		String endereco = sc.nextLine();
 		System.out.println("Crie  uma senha ");
 		String senha = sc.nextLine();
@@ -60,14 +61,14 @@ public class AdminService {
 			try {
 				 novoCliente = new Cliente(nome, cpf, senha, endereco, TipoPessoa.valueOf(tipo));
 			} catch (IllegalArgumentException e) {
-				 System.out.println("TIPO INVÁLIDO , VAMOS SALVAR COMO PADRÃO PESSOA FISICA");
+				 System.out.println("TIPO INVÁLIDO , VAMOS SALVAR COMO PADRÃO PESSOA FÍSICA");
 				 novoCliente = new Cliente(nome, cpf, senha, endereco, TipoPessoa.PF);
 			}
 			
 			this.clienteRepositository.salvar(novoCliente);
 			
 		}else {
-			System.out.println("Digite o Salario ");
+			System.out.println("Digite o Salário ");
 			double salario = sc.nextDouble();
 			Vendedor vendedor = new Vendedor(nome, cpf, senha, endereco, salario);
 			this.vendedorRepository.salvar(vendedor);
@@ -89,7 +90,7 @@ public class AdminService {
 		int opcao = sc.nextInt();
 		this.clienteRepositository.excluirPorid(opcao);
 	}
-	public void cadastrarVeiuclo() {
+	public void cadastrarVeiuclo() throws Exception {
 		
 		sc.nextLine();
 		System.out.println("Digite a marca do Veiculo");
@@ -98,6 +99,7 @@ public class AdminService {
 		String modelo = sc.nextLine();
 		System.out.println("Digite a placa do veiculo");
 		String placa = sc.nextLine();
+		Normaliza.validaPlaca(placa);
 		System.out.println("Digite a cor do veiculo");
 		String cor = sc.nextLine();
 		System.out.println("Digite o ano do veiculo");

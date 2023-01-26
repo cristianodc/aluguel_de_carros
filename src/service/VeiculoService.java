@@ -28,12 +28,22 @@ public class VeiculoService {
 		
 		List<Veiculo> todosVeiculos = this.repository.buscarTodos();
 		
-		for (Veiculo veiculo : todosVeiculos) {
+	/*	for (Veiculo veiculo : todosVeiculos) {
 			if(veiculo.getStatus() == Status.LIVRE) {
 				System.out.println(veiculo);
 			}
+		}*/
+		
+		/*todosVeiculos.forEach(veiculo ->{
 			
-		}
+			if(veiculo.getStatus() == Status.LIVRE) {
+				System.out.println(veiculo);
+			}
+		});*/
+		
+		//todosVeiculos.stream().filter(v -> v.getStatus() == Status.LIVRE).forEach(v -> System.out.println(v));
+		
+		todosVeiculos.stream().filter(v -> v.getStatus() == Status.LIVRE).forEach(System.out::println);
 	}
 	
 	public Veiculo alugaVeiculo(int id, int dias) throws Exception {
@@ -66,12 +76,19 @@ public class VeiculoService {
 	public void buscarAlugados(){
 		List<Veiculo> veiculosAlugados= this.repository.buscarTodos();
 		
-		for (Veiculo veiculo : veiculosAlugados) {
+		/*for (Veiculo veiculo : veiculosAlugados) {
 			
 			if(veiculo.getStatus()== Status.ALUGADO) {
 				System.out.println(veiculo);
 			}
-		}
+		}*/
+		
+		veiculosAlugados.forEach(veiculo ->{
+			
+			if(veiculo.getStatus()== Status.ALUGADO) {
+				System.out.println(veiculo);
+			}
+		});
 		
 		
 	}
